@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Finance Dashboard</title>
+</head>
+<body>
+
+  <h1>Finance Dashboard</h1>
+
+  <button onclick="loadDashboard()">Load Dashboard</button>
+
+  <h2>Total Income: <span id="income"></span></h2>
+  <h2>Total Expense: <span id="expense"></span></h2>
+  <h2>Net Balance: <span id="balance"></span></h2>
+
+  <script>
+    async function loadDashboard() {
+      const res = await fetch('/api/dashboard');
+      const data = await res.json();
+
+      document.getElementById("income").innerText = data.totalIncome;
+      document.getElementById("expense").innerText = data.totalExpense;
+      document.getElementById("balance").innerText = data.netBalance;
+    }
+  </script>
+
+</body>
+</html>
